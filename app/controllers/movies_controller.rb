@@ -28,19 +28,19 @@ class MoviesController < ApplicationController
     
     if params[:checked_ratings]
       temp = {}
-      params[:checked_ratings].each {|x| temp[x] = 1}
+      params[:checked_ratings].each  {|x| temp[x] = 1}
       session[:ratings] = temp
     end
     
     @checked_ratings = Array.new
     session[:ratings].each_key {|key| @checked_ratings.push(key)}
     
-    if session[:sort] == 'title' && params[:sort] == nil || params[:sort] == 'title'
-      sort = 'title'
-      @title_header = 'hilite'
+    if session[:sort] == "title" && params[:sort] == nil || params[:sort] == "title"
+      sort = "title"
+      @title_header = "hilite"
     elsif (session[:sort] == "release_date" && params[:sort] == nil) || params[:sort] == "release_date"
-      sort = 'release_date'
-      @release_date_header = 'hilite'
+      sort = "release_date"
+      @release_date_header = "hilite"
     else
       sort = 1
     end
