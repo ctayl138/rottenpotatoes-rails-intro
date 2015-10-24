@@ -17,13 +17,19 @@ class MoviesController < ApplicationController
   end
 
   def index
-
+    
     @all_ratings = ['G','PG','PG-13','R']
     
     if params[:ratings]
       session[:ratings] = params[:ratings]  
     elsif !params[:ratings] && !session[:ratings]
       session[:ratings] = {'G' => 1,'PG'=> 1,'PG-13'=> 1,'R'=> 1}
+    end
+    
+    if params[:checked_ratings]
+      temp = {}
+      params[:checked_ratings].each {|x| temp[x] = 1}
+      session[:ratings] = temp
     end
     
     @checked_ratings = Array.new
