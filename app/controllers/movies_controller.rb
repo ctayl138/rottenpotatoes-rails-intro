@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
     elsif (session[:sort] == "release_date" && params[:sort] == nil) || params[:sort] == "release_date"
       sort = 'release_date'
       @release_date_header = 'hilite'
-    elsif
+    else
       sort = 1
     end
     
